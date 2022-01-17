@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
-const Datatimer = ({ timerDays, timerHours, timerMinutes, timerSeconds }) => {
+const Datatimer = props => {
+    // debugger;
     return (
         <Fragment>
             <section className="timer-container">
@@ -8,22 +9,22 @@ const Datatimer = ({ timerDays, timerHours, timerMinutes, timerSeconds }) => {
                     <h1 className="title">LOOKING FORWARD TO SUMMER ...</h1>
                     <div className="datatimer">
                         <section>
-                            <p className="text">{timerDays}</p>
+                            <p className="text">{props.day}</p>
                             <small>Days</small>
                         </section>
                         <span>:</span>
                         <section>
-                            <p className="text">{timerHours}</p>
+                            <p className="text">{props.hour}</p>
                             <small>Hours</small>
                         </section>{' '}
                         <span>:</span>
                         <section>
-                            <p className="text">{timerMinutes}</p>
+                            <p className="text">{props.minute}</p>
                             <small>Minutes</small>
                         </section>{' '}
                         <span>:</span>
                         <section>
-                            <p className="text">{timerSeconds}</p>
+                            <p className="text">{props.second}</p>
                             <small>Seconds</small>
                         </section>
                     </div>
@@ -31,13 +32,6 @@ const Datatimer = ({ timerDays, timerHours, timerMinutes, timerSeconds }) => {
             </section>
         </Fragment>
     );
-};
-
-Datatimer.defaultProps = {
-    timerDays: 10,
-    timerHours: 10,
-    timerMinutes: 10,
-    timerSeconds: 10,
 };
 
 export default Datatimer;
