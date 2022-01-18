@@ -1,0 +1,133 @@
+body {
+    background-color: rgba(255, 204, 204, 0.4);
+}
+
+p {
+    font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+    position: absolute;
+}
+
+.song-title {
+    font-size: 0.9em;
+    left: 42%;
+    top: -4%;
+}
+
+.artist {
+    color: rgba(189, 195, 199, 1);
+    font-size: 0.6em;
+    left: 42%;
+    top: 21%;
+}
+
+.progress-bar,
+.progress {
+    border-radius: 28px;
+    position: absolute;
+    height: 3px;
+    top: 50.5%;
+    left: 42%;
+}
+
+.progress-bar {
+    background-color: rgba(189, 195, 199, 0.5);
+    width: 185px;
+}
+.progress {
+    background-color: rgba(253, 92, 99, 0.85);
+    width: 0px;
+}
+
+.app-container {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 6%;
+    height: 500px;
+    width: 1000px;
+}
+
+.pause-play-container {
+    position: absolute;
+    left: 52.3%;
+    top: 44.3%;
+}
+
+.player-body {
+    box-shadow: 0 14px 28px 14px rgba(0, 0, 0, 0.05), 0 36px 40px 0 rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 18px;
+    position: absolute;
+    height: 107px;
+    width: 400px;
+    z-index: 1;
+    left: 30%;
+    top: 42%;
+}
+
+.display {
+    background-color: #fff;
+    border-radius: 18px;
+    position: absolute;
+    height: 107px;
+    width: 360px;
+    z-index: -1;
+    left: 31.9%;
+    top: 42%;
+}
+
+.album-cover {
+    box-shadow: 18px 10px 32px 14px rgba(0, 0, 0, 0.05), 0 52px 75px 0 rgba(0, 0, 0, 0.1);
+    transform: scale(0.24);
+    position: absolute;
+    border-radius: 50%;
+    z-index: 3;
+    top: -2.5%;
+    left: 14%;
+}
+
+.album-center {
+    background-color: #fff;
+    position: absolute;
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    left: 37.5%;
+    top: 44.5%;
+    z-index: 3;
+}
+
+#fwrd-icon {
+    height: 20px;
+    width: 20px;
+    color: rgba(189, 195, 199, 0.8);
+    position: absolute;
+    cursor: pointer;
+    font-size: 34px;
+    z-index: 3;
+    left: 63.1%;
+    top: 49.3%;
+}
+
+#back-icon {
+    height: 20px;
+    width: 20px;
+    color: rgba(189, 195, 199, 0.8);
+    position: absolute;
+    cursor: pointer;
+    font-size: 34px;
+    z-index: 3;
+    left: 47.7%;
+    top: 49.3%;
+}
+
+#pause-icon {
+    height: 20px;
+    width: 20px;
+    color: rgba(189, 195, 199, 0.8);
+    position: absolute;
+    padding-left: 30px;
+    padding-top: 23px;
+    cursor: pointer;
+    font-size: 38px;
+    z-index: 3;
+}
