@@ -1,0 +1,13 @@
+.styleItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0, 5rem 1rem;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+input {
+    margin-right: 1rem;
+}
