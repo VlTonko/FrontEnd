@@ -6,7 +6,6 @@ import Datatimer from './component/Datatimer';
 const countDownDate = new Date('June 1,2022').getTime();
 let now = new Date().getTime();
 let distance = countDownDate - now;
-console.log('dist1', distance);
 
 class Timer extends React.Component {
     constructor(props) {
