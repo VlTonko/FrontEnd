@@ -1,34 +1,40 @@
 import React from 'react';
 import './App.css';
-import Datatimer from './Component/Datatimer';
+import transformData from './helpers/transformData';
+import Datatimer from './component/Datatimer';
 
-function App() {
-    const countDownDate = new Date('June 1,2022').getTime();
-    const now = new Date().getTime();
-    const distance = countDownDate - now;
-    let objTime;
+const countDownDate = new Date('June 1,2022').getTime();
+let now = new Date().getTime();
+let distance = countDownDate - now;
+console.log('dist1', distance);
 
-    const days = Math.floor(distance / (24 * 60 * 60 * 1000));
-    const hours = Math.floor((distance % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)) + 1;
-    const minutes = Math.floor((distance % (60 * 60 * 1000)) / (1000 * 60));
-    const seconds = Math.floor((distance % (60 * 1000)) / 1000);
-
-    if (distance < 0) {
-        clearInterval();
-    } else {
-        objTime = {
-            day: days,
-            hour: hours,
-            minute: minutes,
-            second: seconds,
-        };
+class Timer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: distance };
     }
 
-    return (
-        <div className="App">
-            <Datatimer {...objTime} />
-        </div>
-    );
+    componentDidMount() {
+        this.timerSummer = setInterval(() => this.tick(), 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerSummer);
+    }
+
+    tick() {
+        now = new Date().getTime();
+        distance = countDownDate - now;
+        this.setState({ data: distance });
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <Datatimer {...transformData(this.state.data)} />
+            </div>
+        );
+    }
 }
 
-export default App;
+export default Timer;
