@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 
 const Datatimer = props => {
-    // debugger;
     return (
         <Fragment>
             <section className="timer-container">

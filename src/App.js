@@ -5,12 +5,11 @@ import Datatimer from './component/Datatimer';
 
 const countDownDate = new Date('June 1,2022').getTime();
 let now = new Date().getTime();
-let distance = countDownDate - now;
 
 class Timer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { data: distance };
+        this.state = { data: countDownDate - now };
     }
 
     componentDidMount() {
@@ -23,8 +22,8 @@ class Timer extends React.Component {
 
     tick() {
         now = new Date().getTime();
-        distance = countDownDate - now;
-        this.setState({ data: distance });
+        let amountTime = countDownDate - now;
+        this.setState({ data: amountTime });
     }
 
     render() {
