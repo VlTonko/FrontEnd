@@ -3,10 +3,10 @@ import axios from 'axios';
 import TodoList from './components/todolist/TodoList';
 import Form from './components/form/Form';
 import Image from './components/imageEl/Image';
+import ImagesWing from './components/images/Images';
 import './App.css';
 import URLTODO from './constants/urlTodo';
 import logo from './image/chicho.png';
-import wing from './image/wing.png';
 
 class App extends React.Component {
     constructor(props) {
@@ -15,10 +15,10 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.querytodo();
+        this.queryTodo();
     }
 
-    querytodo = async () => {
+    queryTodo = async () => {
         try {
             const { data } = await axios.get(`${URLTODO}?_limit=5`);
             this.setState({ todos: data });
@@ -27,22 +27,23 @@ class App extends React.Component {
         }
     };
 
-    addTolist = task => {
-        this.setState({ todos: [...this.state.todos, { id: Date.now(), title: task, completed: false }] });
-        axios({
-            method: 'POST',
-            url: `${URLTODO}`,
-            params: { id: Date.now(), title: task, completed: false },
-        }).then(response => {
-            console.log(response.data);
-        });
+    addTolist = async task => {
+        const newTodo = { id: Date.now(), title: task, completed: false };
+        try {
+            await axios.post(`${URLTODO}`, newTodo);
+        } catch (error) {
+            return false;
+        }
+        this.setState({ todos: [...this.state.todos, newTodo] });
     };
 
-    delTodo = id => {
+    delTodo = async id => {
+        try {
+            axios.delete(`${URLTODO}/${id}`);
+        } catch (error) {
+            return false;
+        }
         this.setState({ todos: this.state.todos.filter(el => el.id !== id) });
-        axios.delete(`${URLTODO}/${id}`).then(response => {
-            console.log(response);
-        });
     };
 
     toggleTodo = id => {
@@ -56,14 +57,7 @@ class App extends React.Component {
                 <h1 className="titleTodo">¡Haz negocios con nosotros!</h1>
                 <Form addTolist={this.addTolist} />
                 <TodoList todos={this.state.todos} delTodo={this.delTodo} onToggle={this.toggleTodo} />
-                <div className="imagesWing">
-                    <Image className={'wingImgTwo'} src={wing} alt={wing} />
-                    <Image className={'wingImgOne'} src={wing} alt={wing} />
-                    <Image className={'wingImgTwo'} src={wing} alt={wing} />
-                    <Image className={'wingImgOne'} src={wing} alt={wing} />
-                    <Image className={'wingImgTwo'} src={wing} alt={wing} />
-                    <Image className={'wingImgTwo'} src={wing} alt={wing} />
-                </div>
+                <ImagesWing />
             </div>
         );
     }

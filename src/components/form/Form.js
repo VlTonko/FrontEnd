@@ -10,7 +10,9 @@ class Form extends React.Component {
     handleChangeInput = e => this.setState({ title: e.target.value });
 
     handleSubmit = () => {
-        this.state.title && this.props.addTolist(this.state.title);
+        if (this.state.title) {
+            this.props.addTolist(this.state.title);
+        }
         this.setState({ title: '' });
     };
 

@@ -37,4 +37,5 @@ input[type='checkbox'] {
     accent-color: rgb(4, 216, 32);
     zoom: 1.4;
     border-radius: 50px;
+    margin-right: 5px;
 }

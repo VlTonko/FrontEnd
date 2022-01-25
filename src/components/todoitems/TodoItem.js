@@ -10,10 +10,8 @@ export default function TodoItem({ todo, onChange, delTodo }) {
         <li className={todo.completed ? 'styleItem completed' : 'styleItem'}>
             <span>
                 <input type="checkbox" onChange={handleToggleTodo} checked={todo.completed} />
-                &nbsp;
                 {todo.title}
             </span>
-
             <button className="btnDel" onClick={handleDeleteTodo}>
                 &times;
             </button>
