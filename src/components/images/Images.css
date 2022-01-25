@@ -1,0 +1,15 @@
+.imagesWing {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.wingImgOne {
+    zoom: 0.2;
+    margin-bottom: -2px;
+}
+
+.wingImgTwo {
+    zoom: 0.1;
+}
