@@ -1,6 +1,6 @@
 import React from 'react';
 import UserTable from '../user/User';
-import './UsersTable.css';
+import './UsersTable.scss';
 
 const UsersTable = props => {
     const users = props.users;

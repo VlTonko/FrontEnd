@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './App.css';
+import './App.scss';
 import { urlAllUsers } from './constants/url';
 import UsersTable from './components/users/UsersTable';
 
@@ -46,7 +46,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="wrapper">
-                <h1>Holla!</h1>
+                <h1 className="titleTable">Lista de los mejores trabajadores!</h1>
                 <UsersTable users={this.state.userData} />
             </div>
         );
