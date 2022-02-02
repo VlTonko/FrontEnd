@@ -1,38 +1,31 @@
-import React from 'react';
 import './Form.css';
+import {StInputText, StButton, StButtonAdd} from "../styled";
+import React, { useState } from 'react';
+import App from '../../App'
 
-class Form extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { title: '' };
-    }
 
-    handleChangeInput = e => this.setState({ title: e.target.value });
+export function Form ({addTolist}) {
+    const [title, setTitle] = useState('');
 
-    handleSubmit = () => {
-        if (this.state.title) {
-            this.props.addTolist(this.state.title);
+    const handleChangeInput = e => setTitle( e.target.value );
+
+    const addTask = () => addTolist(title);
+
+    const handleSubmit = () => {
+        if (title) {
+            addTask(title);
         }
-        this.setState({ title: '' });
+        setTitle(title, '' );
     };
 
-    render() {
         return (
-            <div className="inputField">
-                <input
-                    className="inputText"
-                    onChange={this.handleChangeInput}
-                    placeholder="
-Agregar tarea"
-                    value={this.state.title}
-                ></input>
-                <button onClick={this.handleSubmit} className="add">
-                    {' '}
-                    Agregar{' '}
-                </button>
-            </div>
+            <>
+                <StInputText onChange={handleChangeInput} placeholder="Agregar tarea" value={title}/>
+                <StButtonAdd onClick={handleSubmit} className="add">
+                    Agregar
+                </StButtonAdd>
+            </>
         );
-    }
 }
 
 export default Form;

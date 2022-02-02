@@ -1,38 +1,7 @@
-.inputField {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0 5px 0;
-    margin-left: 40px;
-    margin-right: 40px;
-    height: 30px;
-    width: 80%;
-}
-
-.inputText {
-    padding-left: 5px;
-    width: 80%;
-    border-radius: 8px;
-    box-shadow: 0px 10px 14px -7px #276873;
-}
-
 .inputText:focus {
     background-color: rgba(135, 255, 88, 0.418);
     color: rgb(68, 1, 1);
     font-size: 16px;
-}
-
-.add {
-    margin-left: 10px;
-    width: 20%;
-    border-width: 1px;
-    color: #fff;
-    border-color: #9eb359;
-    font-weight: bold;
-    border-radius: 8px;
-    box-shadow: 0px 10px 14px -7px #437327;
-    text-shadow: 0px 1px 0px #3d8a54;
-    background: linear-gradient(#59b386, #beff28);
-    cursor: pointer;
 }
 
 .add:hover {

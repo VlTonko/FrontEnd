@@ -1,36 +1,5 @@
-.styleItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    margin-right: 40px;
-    padding: 5px 5px 5px 5px;
-    border-radius: 8px;
-    box-shadow: 0px 10px 14px -7px #ffd3999d;
-    width: 400px;
-}
-
 .completed {
     background: rgba(252, 201, 62, 0.733);
-}
-
-.btnDel {
-    margin-left: 10px;
-    width: 25px;
-    background-color: #d84141;
-    color: #ffffff;
-    border-radius: 8px;
-    transition-duration: 0.5s;
-    box-shadow: 0px 8px 12px -5px #9c2525;
-    text-shadow: 0px 1px 0px #9c2525;
-    background: linear-gradient(#d84141, #9c2525);
-    cursor: pointer;
-}
-
-.btnDel:hover {
-    background: linear-gradient(#9c2525, #d84141);
 }
 
 input[type='checkbox'] {

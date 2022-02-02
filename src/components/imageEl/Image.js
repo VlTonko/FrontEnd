@@ -1,10 +1,10 @@
 import React from 'react';
-import './Image.css';
+import {WingItem} from "../styled";
 
-const Image = ({ className, src, alt }) => (
-    <div className={className}>
+const Image = ({ src, alt, small }) => (
+    <WingItem small={small}>
         <img src={src} alt={alt} />
-    </div>
+    </WingItem>
 );
 
 export default Image;

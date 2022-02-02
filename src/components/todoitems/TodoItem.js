@@ -1,20 +1,19 @@
 import React from 'react';
 import './TodoItem.css';
+import {StButtonDelete, StInputCheck, StTask} from "../styled";
+
 
 export default function TodoItem({ todo, onChange, delTodo }) {
     const handleToggleTodo = () => onChange(todo.id);
-
     const handleDeleteTodo = () => delTodo(todo.id);
 
     return (
-        <li className={todo.completed ? 'styleItem completed' : 'styleItem'}>
-            <span>
-                <input type="checkbox" onChange={handleToggleTodo} checked={todo.completed} />
+        <StTask className={todo.completed ? 'styleItem completed' : 'styleItem'}>
+                <StInputCheck type="checkbox" onChange={handleToggleTodo} checked={todo.completed} />
                 {todo.title}
-            </span>
-            <button className="btnDel" onClick={handleDeleteTodo}>
+            <StButtonDelete onClick={handleDeleteTodo}>
                 &times;
-            </button>
-        </li>
+            </StButtonDelete>
+        </StTask>
     );
 }
