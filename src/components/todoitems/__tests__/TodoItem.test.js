@@ -1,6 +1,6 @@
 import React from "react";
 import {mount, shallow} from 'enzyme';
-import TodoItem from "./components/todoitems/TodoItem";
+import TodoItem from "../TodoItem";
 
 describe('TodoItem', () => {
     let props;
