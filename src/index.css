@@ -11,13 +11,12 @@ code {
 }
 
 .wrapper {
-    margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 500px;
-    margin: 0 auto;
+    margin: 90px auto;
     border: 2px solid rgb(105, 105, 105);
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.787);

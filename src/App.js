@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import TodoList from './components/todolist/TodoList';
 import Form from './components/form/Form';
@@ -6,61 +6,75 @@ import Image from './components/imageEl/Image';
 import ImagesWing from './components/images/Images';
 import './App.css';
 import URLTODO from './constants/urlTodo';
-import logo from './image/chicho.png';
+import logo from './components/image/chicho.png';
+import Notification from "./components/notification/Notification";
+import {NotificationContext} from "./NotificationContent";
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { todos: [] };
-    }
+const App = () => {
+    const [state, setState] = useState({
+        todos: [],
+        isLoading: false,
+    });
 
-    componentDidMount() {
-        this.queryTodo();
-    }
+    useEffect(() => {
+        queryTodo();
+    },[]);
 
-    queryTodo = async () => {
+    const {notification, showNotification} = useContext(NotificationContext);
+    // console.log(showNotification);
+
+    const queryTodo = async () => {
         try {
-            const { data } = await axios.get(`${URLTODO}?_limit=5`);
-            this.setState({ todos: data });
+            setState({...state, isLoading: true});
+            const {data} = await axios.get(`${URLTODO}?_limit=5`);
+            setState({isLoading: false, todos: data});
         } catch (error) {
-            return false;
+            setState({...state, isLoading: false});
         }
     };
 
-    addTolist = async task => {
+    const addTolist = async task => {
         const newTodo = { id: Date.now(), title: task, completed: false };
         try {
             await axios.post(`${URLTODO}`, newTodo);
+            //console.log(showNotification);
+            showNotification({type: "success", message: `Task ${task} was added successfully`})
+            // console.log(notification);
+            setState( {...state, todos: [...state.todos, newTodo]});
         } catch (error) {
+            showNotification({type: "fail", message: `Task was not added`})
             return false;
         }
-        this.setState({ todos: [...this.state.todos, newTodo] });
+
     };
 
-    delTodo = async id => {
+    const delTodo = async id => {
         try {
-            axios.delete(`${URLTODO}/${id}`);
+            await axios.delete(`${URLTODO}/${id}`);
+            setState({...state, todos: state.todos.filter(el => el.id !== id)});
         } catch (error) {
             return false;
         }
-        this.setState({ todos: this.state.todos.filter(el => el.id !== id) });
     };
 
-    toggleTodo = id => {
-        this.setState({ todos: this.state.todos.map(el => (el.id === id ? { ...el, completed: !el.completed } : el)) });
+    const toggleTodo = id => {
+        setState( {...state, todos: state.todos.map(el => (el.id === id ? { ...el, completed: !el.completed } : el))});
     };
 
-    render() {
         return (
-            <div className="wrapper">
-                <Image className={'titleImg'} src={logo} alt={logo} />
-                <h1 className="titleTodo">¡Haz negocios con nosotros!</h1>
-                <Form addTolist={this.addTolist} />
-                <TodoList todos={this.state.todos} delTodo={this.delTodo} onToggle={this.toggleTodo} />
-                <ImagesWing />
-            </div>
+            <>
+                { notification.type && <Notification message={notification.message} type={notification.type} />}
+                    <div className="wrapper">
+                        <Image className={'titleImg'} src={logo} alt={logo} />
+                        <h1 className="titleTodo">¡Haz negocios con nosotros!</h1>
+                        <Form addTolist={addTolist} />
+                        <TodoList todos={state.todos} delTodo={delTodo} onToggle={toggleTodo} />
+                        <ImagesWing />
+                    </div>
+            </>
+
+
         );
-    }
 }
 
 export default App;

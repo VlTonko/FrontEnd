@@ -1,38 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Form.css';
 
-class Form extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { title: '' };
-    }
+const Form = ({addTolist}) => {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = { title: '' };
+    // }
+    const [title, setTitle] = useState("");
 
-    handleChangeInput = e => this.setState({ title: e.target.value });
+    const handleChangeInput = e => setTitle( e.target.value );
 
-    handleSubmit = () => {
-        if (this.state.title) {
-            this.props.addTolist(this.state.title);
+    const handleSubmit = () => {
+        if (!!title) {
+            addTolist(title);
         }
-        this.setState({ title: '' });
+        setTitle( '' );
     };
 
-    render() {
         return (
             <div className="inputField">
                 <input
                     className="inputText"
-                    onChange={this.handleChangeInput}
-                    placeholder="
-Agregar tarea"
-                    value={this.state.title}
-                ></input>
-                <button onClick={this.handleSubmit} className="add">
-                    {' '}
-                    Agregar{' '}
-                </button>
+                    onChange={handleChangeInput}
+                    placeholder="Agregar tarea"
+                    value={title}
+                />
+                <button onClick={handleSubmit} className="add">Agregar</button>
             </div>
         );
-    }
 }
 
 export default Form;
