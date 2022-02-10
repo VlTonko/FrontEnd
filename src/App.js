@@ -14,12 +14,10 @@ const App = () => {
                     <Route path='*' element={<NotPage />}/>
                 </Routes>
 
-
                 {/*{ login && <Notification message={notification.message} type={notification.type} />}*/}
                 <div className="wrapper">
                     <Form />
                 </div>
-
             </>
         );
 }
