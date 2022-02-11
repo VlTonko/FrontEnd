@@ -2,8 +2,10 @@ import React, {useState, useContext} from 'react';
 import Input from '../Input/Input';
 import Button from "../Button/Button";
 import {RegistrContext} from "../../RegistrContext";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+    let navigate = useNavigate();
     const [title, setTitle] = useState("");
     const { addLogin } = useContext(RegistrContext);
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import Gardian from "../Gardian/Gardian";
-import Header from "../Header/Header";
+import Gardian from "../../components/Gardian/Gardian";
+import Header from "../../components/Header/Header";
 
 const Main = () => {
     return (
