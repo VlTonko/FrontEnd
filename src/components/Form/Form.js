@@ -3,6 +3,7 @@ import Input from '../Input/Input';
 import Button from "../Button/Button";
 import {RegistrContext} from "../../RegistrContext";
 import { useNavigate } from "react-router-dom";
+import {StForm} from "./StForm";
 
 const Form = () => {
     let navigate = useNavigate();
@@ -14,17 +15,18 @@ const Form = () => {
     const handleSubmit = () => {
         if (title) {
             addLogin(title);
+            setTitle( '' );
+            navigate('/news')
         }
-        setTitle( '' );
-        navigate('/news')
+
     }
 
     return (
-        <div>
+        <StForm>
             <h3>SignIn</h3>
             <Input onChange = {handleChangeInput} value={title}/>
             <Button onClick = {handleSubmit} contentKey="SUBMIT"/>
-        </div>
+        </StForm>
     )
 };
 

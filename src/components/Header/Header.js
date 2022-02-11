@@ -1,6 +1,7 @@
 import React from 'react';
 import {RegistrContext} from "../../RegistrContext";
 import Button from "../Button/Button";
+import {StHead} from "./StHeader"
 
 const Header = () => {
     const { login, clearLogin } = React.useContext(RegistrContext);
@@ -10,13 +11,13 @@ const Header = () => {
     }
 
     return (
-        <div>
+        <>
             {!login ? <p>Please SignIn</p> :
-                <div>
+                <StHead>
                     <p>Welcome dear {login}</p>
                     <Button onClick = {handleSubmit} contentKey="Logout"/>
-                </div>}
-        </div>
+                </StHead>}
+        </>
     );
 };
 

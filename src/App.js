@@ -7,14 +7,17 @@ import {Routes, Route} from "react-router-dom";
 import MoviePage from "./Pages/MoviePage/MoviePage";
 import SignIn from "./Pages/SignIn/SignIn";
 import NotePage from "./Pages/NotPage/NotePage";
+import Layout from "./components/Layout/Layout"
 
 const App = () => {
         return (
                 <Routes>
-                    <Route path='/' element={<SignIn />}/>
-                    <Route path='/news' element={<Main />}/>
-                    <Route path="/news/:id" element={<MoviePage />}/>
-                    <Route path='*' element={<NotePage />}/>
+                    <Route path="/" element={<Layout/>}>
+                        <Route index element={<SignIn />}/>
+                        <Route path='news' element={<Main />}/>
+                        <Route path="news/:id" element={<MoviePage />}/>
+                        <Route path='*' element={<NotePage />}/>
+                    </Route>
                 </Routes>
         );
 }
