@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import './Form.css';
+import {addTodo} from "../../store/todos/actions";
+import {useDispatch} from "react-redux";
+import {NotificationContext} from "../../NotificationContent";
 
-const Form = ({addTolist}) => {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = { title: '' };
-    // }
+const Form = () => {
+    const dispatch = useDispatch();
+    const {showNotification} = useContext(NotificationContext);
     const [title, setTitle] = useState("");
-
     const handleChangeInput = e => setTitle( e.target.value );
+
+    const addTolist = async task => {
+        const newTodo = { id: Date.now(), title: task, completed: false };
+        try {
+            showNotification({type: "success", message: `Task ${task} was added successfully`})
+            dispatch(addTodo(newTodo))
+        } catch (error) {
+            showNotification({type: "fail", message: `Task was not added`})
+            return false;
+        }
+    };
 
     const handleSubmit = () => {
         if (!!title) {

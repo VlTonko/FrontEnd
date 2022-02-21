@@ -1,0 +1,1 @@
+export const selectorNotify = state => state.notify.notification;
