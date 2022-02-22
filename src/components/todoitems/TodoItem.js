@@ -3,7 +3,6 @@ import './TodoItem.css';
 
 export default function TodoItem({ todo, onChange, delTodo }) {
     const handleToggleTodo = () => onChange(todo.id);
-
     const handleDeleteTodo = () => delTodo(todo.id);
 
     return (

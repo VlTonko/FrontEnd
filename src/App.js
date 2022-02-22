@@ -6,15 +6,15 @@ import ImagesWing from './components/images/Images';
 import './App.css';
 import logo from './components/image/chicho.png';
 import Notification from "./components/notification/Notification";
-import {NotificationContext} from "./NotificationContent";
-
+import {useSelector} from "react-redux";
+import {selectorNotify} from "./store/notify/selectors";
 
 const App = () => {
-    const {notification} = useContext(NotificationContext);
+    const notify = useSelector(selectorNotify);
 
         return (
             <>
-                { notification.type && <Notification message={notification.message} type={notification.type} />}
+                { notify.type && <Notification />}
                     <div className="wrapper">
                         <Image className={'titleImg'} src={logo} alt={logo} />
                         <h1 className="titleTodo">¡Haz negocios con nosotros!</h1>

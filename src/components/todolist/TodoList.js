@@ -11,16 +11,21 @@ const TodoList = () => {
     const todos = useSelector(selectorTodos);
     console.log(todos)
 
-
     const delTodo = async id => {
         dispatch(deleteTodo(id))
-        dispatch(deleteNotification({message: `Task was delete successfully`}));
+        dispatch(showNotification({message: `Task was delete successfully`}));
+        setTimeout(clearNotify, 2000);
     };
 
     const toggleTodo = id => {
         dispatch(completedTodo(id));
-        dispatch(showNotification({message: `Task was changed successfully`}))
+        dispatch(showNotification({message: `Task was changed successfully`}));
+        setTimeout(clearNotify, 2000);
     }
+
+    const clearNotify = () => {
+        dispatch(deleteNotification({message: ``}));
+    };
 
     return (
         <ul className="listItems">
