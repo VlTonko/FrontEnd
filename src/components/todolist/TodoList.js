@@ -3,7 +3,7 @@ import TodoItem from '../todoitems/TodoItem';
 import {useDispatch, useSelector} from "react-redux";
 import {selectorTodos} from "../../store/todos/selectors";
 import {completedTodo, deleteTodo} from "../../store/todos/actions";
-import {showNotification} from "../../store/notify/actions";
+import {deleteNotification, showNotification} from "../../store/notify/actions";
 
 
 const TodoList = () => {
@@ -14,7 +14,7 @@ const TodoList = () => {
 
     const delTodo = async id => {
         dispatch(deleteTodo(id))
-        dispatch(showNotification({message: `Task was delete successfully`}))
+        dispatch(deleteNotification({message: `Task was delete successfully`}));
     };
 
     const toggleTodo = id => {

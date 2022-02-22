@@ -1,14 +1,16 @@
 import React from 'react';
 import {StNotification} from "./StNotification";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {selectorNotify} from "../../store/notify/selectors";
+import {showNotification} from "../../store/notify/actions";
 
 const Notification = () => {
-    const notify = useSelector(selectorNotify);
+    const dispatch = useDispatch();
+
 
     return (
-        <StNotification isSuccess = {type === "success"}>
-            <p>{message}</p>
+        <StNotification>
+            <p></p>
         </StNotification>
     );
 };
