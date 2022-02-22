@@ -1,18 +1,20 @@
 import React from 'react';
 import {StNotification} from "./StNotification";
-import {useSelector} from "react-redux";
-import {selectorNotify} from "../../store/notify/selectors";
 
-
-const Notification = () => {
-    const notify = useSelector(selectorNotify);
+const Notification = ({notify, clearNotification}) => {
     console.log('notifyNot', notify);
-
-    return (
-        <StNotification isSuccess={notify.type === "success"}>
-            <p>{notify.message}</p>
-        </StNotification>
-    );
+    const {type, message} = notify;
+    React.useEffect(() => {
+        if (type) {
+            setTimeout(()=> {
+                clearNotification();
+            }, 2000)
+        }
+    }, [type])
+    return type ?
+        <StNotification isSuccess={type === "success"}>
+            <p>{message}</p>
+        </StNotification> : null
 };
 
 export default Notification;

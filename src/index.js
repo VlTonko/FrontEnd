@@ -3,15 +3,12 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
 import './index.css';
 import App from './App';
-import { store } from './store'
-import {NotificationContextProvider} from "./NotificationContent";
+import { store } from './store';
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <NotificationContextProvider>
-                <App/>
-            </NotificationContextProvider>
+            <App/>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

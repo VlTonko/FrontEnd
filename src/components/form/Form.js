@@ -1,24 +1,14 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import './Form.css';
-import {addTodo} from "../../store/todos/actions";
-import {useDispatch} from "react-redux";
-import {NotificationContext} from "../../NotificationContent";
-import {addNotification, deleteNotification} from "../../store/notify/actions";
 
-const Form = () => {
-    const dispatch = useDispatch();
+const Form = ({addTodo, addNotify}) => {
     const [title, setTitle] = useState("");
     const handleChangeInput = e => setTitle( e.target.value );
 
-    const clearNotify = () => {
-        dispatch(deleteNotification({message: ``}));
-    };
-
     const addTolist = async task => {
         const newTodo = { id: Date.now(), title: task, completed: false };
-        dispatch(addTodo(newTodo))
-        dispatch(addNotification({message: `Task ${task} was added successfully`}))
-        setTimeout(clearNotify, 2000);
+        addTodo(newTodo);
+        addNotify({message: `Task ${task} was added successfully`});
     };
 
     const handleSubmit = () => {
