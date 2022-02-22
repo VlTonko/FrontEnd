@@ -1,4 +1,4 @@
-import { ADD_NOTIFICATION, DELETE_NOTIFICATION, SHOW_NOTIFICATION } from "./actionTypes";
+import { ADD_NOTIFICATION, DELETE_NOTIFICATION } from "./actionTypes";
 
 export const initialState = { notification: {type: '', message: ''}};
 

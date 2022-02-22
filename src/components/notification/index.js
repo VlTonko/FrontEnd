@@ -1,7 +1,7 @@
 import Notification from './Notification'
 import {connect} from "react-redux";
 import {selectorNotify} from "../../store/notify/selectors";
-import {addNotification, deleteNotification} from "../../store/notify/actions";
+import {deleteNotification} from "../../store/notify/actions";
 
 const mapStateToProps = (state) => ({
     notify: selectorNotify(state),

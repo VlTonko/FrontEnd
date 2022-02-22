@@ -1,21 +1,17 @@
 import React from 'react';
 import TodoItem from '../todoitems/TodoItem';
-import {useDispatch} from "react-redux";
-import {deleteNotification} from "../../store/notify/actions";
 
-
-const TodoList = ({todos, showNotify, deleteTodo, completedTodo}) => {
-    const dispatch = useDispatch();
+const TodoList = ({todos, addNotify, deleteTodo, completedTodo}) => {
     console.log(todos)
 
     const delTodo = async id => {
         deleteTodo(id);
-        showNotify({message: `Task was delete successfully`});
+        addNotify({message: `Task was delete successfully`});
     };
 
     const toggleTodo = id => {
         completedTodo(id);
-        showNotify({message: `Task was changed successfully`});
+        addNotify({message: `Task was changed successfully`});
     }
 
     return (

@@ -1,6 +1,8 @@
 import {ADD_TODO, DELETE_TODO, COMPLETED_TODO} from "./actionTypes";
 
-const reducerTodos = (state = {todos: []}, {type, payload}) => {
+export const initialState = {todos: []}
+
+const reducerTodos = (state = initialState, {type, payload}) => {
     switch (type) {
         case ADD_TODO:
             return {...state, todos: [...state.todos, payload]}

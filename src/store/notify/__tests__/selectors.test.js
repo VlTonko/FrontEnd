@@ -3,7 +3,7 @@ import {initialState} from "../reducer";
 
 describe('selectors', () => {
     it('should provide the initial state', () => {
-        expect(selectorNotify({ notify: {notification: {initialState}} })).toEqual({})
+        expect(selectorNotify({notify: initialState})).toEqual({type: '', message: ''})
     });
     it('should provide the initial state', () => {
         expect(selectorNotify({notify: {}})).toEqual(undefined)
