@@ -1,23 +1,12 @@
-import React, { useContext } from 'react';
-import TodoList from './components/todolist';
-import Form from './components/form';
-import Image from './components/imageEl/Image';
-import ImagesWing from './components/images/Images';
+import React from 'react';
 import './App.css';
-import logo from './components/image/chicho.png';
-import Notification from "./components/notification";
+import View from "./components/view/index";
+
 
 const App = () => {
         return (
             <>
-                    <Notification />
-                    <div className="wrapper">
-                        <Image className={'titleImg'} src={logo} alt={logo} />
-                        <h1 className="titleTodo">¡Haz negocios con nosotros!</h1>
-                        <Form />
-                        <TodoList />
-                        <ImagesWing />
-                    </div>
+                <View/>
             </>
         );
 }
